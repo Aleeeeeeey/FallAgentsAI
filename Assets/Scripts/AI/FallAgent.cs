@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,10 +14,16 @@ public class FallAgent : MonoBehaviour
     public string team;
     int areaMask;
 
+    BehaviorGraphAgent graphAgent;
+    public BehaviorGraph objectiveGraph;
+    public BehaviorGraph defensiveGraph;
+    public BehaviorGraph aggressiveGraph;
+
     void Start()
     {
         //Referencia al agente y le asigna una de las 3 clases a este mismo.
         agent = GetComponent<NavMeshAgent>();
+        graphAgent = GetComponent<BehaviorGraphAgent>();
         AssignClass();
     }
 
@@ -44,16 +51,22 @@ public class FallAgent : MonoBehaviour
                         areaMask += 1 << NavMesh.GetAreaFromName("Walkable");
                         areaMask += 1 << NavMesh.GetAreaFromName("Treadmill");
                         agent.areaMask = areaMask;
+                        graphAgent.Graph = objectiveGraph;
+                        graphAgent.Init();
                         break;
 
                     case "Defensive":
                         areaMask += 1 << NavMesh.GetAreaFromName("BlueZone");
                         areaMask += 1 << NavMesh.GetAreaFromName("Nest");
                         agent.areaMask = areaMask;
+                        graphAgent.Graph = defensiveGraph;
+                        graphAgent.Init();
                         break;
 
-                    case "Aggresive":
+                    case "Aggressive":
                         agent.areaMask = NavMesh.AllAreas;
+                        graphAgent.Graph = aggressiveGraph;
+                        graphAgent.Init();
                         break;
                 }
 
@@ -69,16 +82,22 @@ public class FallAgent : MonoBehaviour
                         areaMask += 1 << NavMesh.GetAreaFromName("Walkable");
                         areaMask += 1 << NavMesh.GetAreaFromName("Treadmill");
                         agent.areaMask = areaMask;
+                        graphAgent.Graph = objectiveGraph;
+                        graphAgent.Init();
                         break;
 
                     case "Defensive":
                         areaMask += 1 << NavMesh.GetAreaFromName("YellowZone");
                         areaMask += 1 << NavMesh.GetAreaFromName("Nest");
                         agent.areaMask = areaMask;
+                        graphAgent.Graph = defensiveGraph;
+                        graphAgent.Init();
                         break;
 
-                    case "Aggresive":
+                    case "Aggressive":
                         agent.areaMask = NavMesh.AllAreas;
+                        graphAgent.Graph = aggressiveGraph;
+                        graphAgent.Init();
                         break;
                 }
 
@@ -94,15 +113,22 @@ public class FallAgent : MonoBehaviour
                         areaMask += 1 << NavMesh.GetAreaFromName("Walkable");
                         areaMask += 1 << NavMesh.GetAreaFromName("Treadmill");
                         agent.areaMask = areaMask;
+                        graphAgent.Graph = objectiveGraph;
+                        graphAgent.Init();
                         break;
 
                     case "Defensive":
                         areaMask += 1 << NavMesh.GetAreaFromName("RedZone");
                         areaMask += 1 << NavMesh.GetAreaFromName("Nest");
+                        agent.areaMask = areaMask;
+                        graphAgent.Graph = defensiveGraph;
+                        graphAgent.Init();
                         break;
 
-                    case "Aggresive":
+                    case "Aggressive":
                         agent.areaMask = NavMesh.AllAreas;
+                        graphAgent.Graph = aggressiveGraph;
+                        graphAgent.Init();
                         break;
                 }
 

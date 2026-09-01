@@ -274,9 +274,10 @@ GameObject:
   - component: {fileID: 716292255472816119}
   - component: {fileID: 8416745651787168096}
   - component: {fileID: 5174211291977822333}
+  - component: {fileID: 8436018238111308491}
   m_Layer: 0
   m_Name: Duck
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,6 +389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedClass: 
   team: Red
+  objectiveGraph: {fileID: 6259412628042792895, guid: 1f9183786d07bd043bb6b354b048dc64, type: 2}
+  defensiveGraph: {fileID: 6259412628042792895, guid: 9b27213144e49a34fa6de4c65536afe9, type: 2}
+  aggressiveGraph: {fileID: 6259412628042792895, guid: d80f2365c31a1574686b6979e01736af, type: 2}
 --- !u!114 &5174211291977822333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,3 +421,26 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 8636671622153513339}
+--- !u!136 &8436018238111308491
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636671622153513339}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 0.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.36278063, z: -0.035414368}
